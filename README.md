@@ -4,12 +4,12 @@ a python fuzzy finder for the CLI
 --- 
 
 ## Table Of Contents:
-[General Use](#general-use)
-  [current-dir option](#current-dir-option)
-  [folders option](#folders-option)
-  [both option](#both-option)
-  [show-hidden option](#show-hidden-option)
-[setup](#setup)
+- [General Use](#general-use)
+  - [current-dir option](#current-dir-option)
+  - [folders option](#folders-option)
+  - [both option](#both-option)
+  - [show-hidden option](#show-hidden-option)
+- [setup](#setup)
 
 ---
 
