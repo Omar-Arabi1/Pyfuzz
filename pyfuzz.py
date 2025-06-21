@@ -3,7 +3,7 @@ import typer
 
 pyfuzz = typer.Typer()
 
-def ishidden(check_hidden: str, showhidden):
+def ishidden(check_hidden: str, showhidden: bool):
     if showhidden:
         print(check_hidden)
     else:
@@ -22,7 +22,7 @@ def list_dir(list_to_loop, part_of_name, showhidden):
 
 @pyfuzz.command()
 def search(file_name: str, current_dir: str = os.getcwd(), folders: bool = False, both: bool = False, show_hidden: bool = False):
-    if file_name.startswith("."):
+    if file_name.startswith(".") and not show_hidden:
         print("Invalid name because it starts with '.' use --hidden to search through hidden directories")
         return
     
@@ -33,9 +33,9 @@ def search(file_name: str, current_dir: str = os.getcwd(), folders: bool = False
     for item in os.listdir(current_dir):
         if both:
             all.append(item)
-        elif os.path.isfile(item):
-            files.append(item)
-        elif os.path.isdir(item):
+        elif os.path.isfile(os.path.join(current_dir, item)):
+            files.append(os.path.join(current_dir, item))
+        elif os.path.isdir(os.path.join(current_dir, item)):
             directories.append(item)
 
     if not folders and not both:
