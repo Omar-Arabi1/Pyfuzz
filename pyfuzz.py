@@ -29,6 +29,10 @@ def search(file_name: str, current_dir: str = os.getcwd(), folders: bool = False
     files = []
     directories = []
     all = []
+
+    if not os.path.isdir(current_dir) or not os.path.exists(current_dir):
+        print("Invalid directory")
+        return
     
     for item in os.listdir(current_dir):
         if both:
